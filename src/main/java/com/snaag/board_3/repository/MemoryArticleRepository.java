@@ -4,6 +4,7 @@ import com.snaag.board_3.domain.Article;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class MemoryArticleRepository implements ArticleRepository {
     private static Map<Long, Article> store = new HashMap<>();
@@ -26,8 +27,10 @@ public class MemoryArticleRepository implements ArticleRepository {
     }
 
     @Override
-    public Article loadOne(Long id) {
-        return store.get(id);
+    public Optional<Article> loadOne(Long id) {
+        // https://mangkyu.tistory.com/70
+//        Optional<Article> optional = Optional.ofNullable(store.get(id));
+        return Optional.ofNullable(store.get(id));
     }
 
     @Override

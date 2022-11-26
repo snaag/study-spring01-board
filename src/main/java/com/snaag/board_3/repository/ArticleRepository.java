@@ -3,6 +3,7 @@ package com.snaag.board_3.repository;
 import com.snaag.board_3.domain.Article;
 
 import java.util.Map;
+import java.util.Optional;
 
 public interface ArticleRepository {
     // C
@@ -12,7 +13,7 @@ public interface ArticleRepository {
     Map<Long, Article> loadAll();
 
     // R _ one
-    Article loadOne(Long id);
+    Optional<Article> loadOne(Long id);
 
     // U
     Long updateOne(Long id, Article article);
