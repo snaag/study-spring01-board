@@ -1,18 +1,9 @@
 package com.snaag.board_3.domain;
 
 public class Article {
-    private Long id;
     private String name;
     private String title;
     private String context;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
