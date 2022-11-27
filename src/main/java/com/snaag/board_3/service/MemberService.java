@@ -26,8 +26,7 @@ public class MemberService {
 
     // 글 하나만 불러오기
     public Optional<Article> loadOneArticle(Long id) {
-        Article article = memoryArticleRepository.loadOne(id).get();
-        return Optional.ofNullable(article);
+        return memoryArticleRepository.loadOne(id);
     }
 
     // 글 업데이트

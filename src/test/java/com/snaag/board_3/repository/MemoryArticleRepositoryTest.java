@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -162,5 +163,33 @@ class MemoryArticleRepositoryTest {
         // then 이런 결과가 나와야함
         assertThat(memoryArticleRepository.loadAll().size())
             .isEqualTo(1);
+    }
+    
+    @Test
+    void loadNullOne() {
+        Article articleCreate1 = new Article();
+        articleCreate1.setName("sang-a");
+        articleCreate1.setTitle("spring");
+        articleCreate1.setContext("demo 만들어보기");
+
+        Article articleCreate2 = new Article();
+        articleCreate2.setName("sang-a");
+        articleCreate2.setTitle("spring");
+        articleCreate2.setContext("demo 만들어보기");
+
+        Article articleCreate3 = new Article();
+        articleCreate3.setName("sang-a");
+        articleCreate3.setTitle("spring");
+        articleCreate3.setContext("demo 만들어보기");
+
+        memoryArticleRepository.create(articleCreate1);
+        memoryArticleRepository.create(articleCreate2);
+        memoryArticleRepository.create(articleCreate3);
+        
+        memoryArticleRepository.deleteAll();
+        
+        Optional<Article> optional = memoryArticleRepository.loadOne(1L);
+        System.out.println("optional = " + optional);
+
     }
 }
