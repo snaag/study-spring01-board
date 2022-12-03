@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberServiceTest {
     public MemoryArticleRepository memoryArticleRepository = new MemoryArticleRepository();
-    public MemberService memberService = new MemberService(memoryArticleRepository);
+    public ArticleService articleService = new ArticleService(memoryArticleRepository);
 
     @AfterEach
     public void afterEach() {
-        memberService.deleteAllArticles();
+        articleService.deleteAllArticles();
     }
 
     @Test
@@ -26,10 +26,10 @@ class MemberServiceTest {
         article.setTitle("spring");
         article.setContext("board demo");
 
-        memberService.createArticle(article);
+        articleService.createArticle(article);
 
         // when 이걸 실행했을때
-        Integer size = memberService.loadAllArticles().size();
+        Integer size = articleService.loadAllArticles().size();
 
         // then 이런 결과가 나와야함
         assertThat(size).isEqualTo(1);
@@ -53,12 +53,12 @@ class MemberServiceTest {
         article3.setTitle("spring (3)");
         article3.setContext("board demo (3)");
 
-        memberService.createArticle(article1);
-        memberService.createArticle(article2);
-        memberService.createArticle(article3);
+        articleService.createArticle(article1);
+        articleService.createArticle(article2);
+        articleService.createArticle(article3);
 
         // when 이걸 실행했을때
-        Integer size = memberService.loadAllArticles().size();
+        Integer size = articleService.loadAllArticles().size();
 
         // then 이런 결과가 나와야함
         assertThat(size).isEqualTo(3);
@@ -82,12 +82,12 @@ class MemberServiceTest {
         article3.setTitle("spring (3)");
         article3.setContext("board demo (3)");
 
-        Long id1 = memberService.createArticle(article1);
-        memberService.createArticle(article2);
-        memberService.createArticle(article3);
+        Long id1 = articleService.createArticle(article1);
+        articleService.createArticle(article2);
+        articleService.createArticle(article3);
 
         // when 이걸 실행했을때
-        Article loadArticle = memberService.loadOneArticle(id1).get();
+        Article loadArticle = articleService.loadOneArticle(id1).get();
 
         // then 이런 결과가 나와야함
         assertThat(loadArticle).isEqualTo(article1);
@@ -107,8 +107,8 @@ class MemberServiceTest {
         article2.setContext("board demo (2)");
 
 
-        Long id1 = memberService.createArticle(article1);
-        memberService.createArticle(article2);
+        Long id1 = articleService.createArticle(article1);
+        articleService.createArticle(article2);
 
         // when 이걸 실행했을때
         Article newArticle1 = new Article();
@@ -116,11 +116,11 @@ class MemberServiceTest {
         newArticle1.setTitle("spring (updated)");
         newArticle1.setContext("board demo (updated)");
 
-        Long updateArticleId = memberService.updateOneArticle(id1, newArticle1);
+        Long updateArticleId = articleService.updateOneArticle(id1, newArticle1);
 
         // then 이런 결과가 나와야함
         assertThat(updateArticleId).isEqualTo(id1);
-        assertThat(memberService.loadOneArticle(id1).get().getName())
+        assertThat(articleService.loadOneArticle(id1).get().getName())
             .isEqualTo("sang-a (updated)");
     }
 
@@ -142,15 +142,15 @@ class MemberServiceTest {
         article3.setTitle("spring (3)");
         article3.setContext("board demo (3)");
 
-        memberService.createArticle(article1);
-        memberService.createArticle(article2);
-        memberService.createArticle(article3);
+        articleService.createArticle(article1);
+        articleService.createArticle(article2);
+        articleService.createArticle(article3);
 
         // when 이걸 실행했을때
-        memberService.deleteAllArticles();
+        articleService.deleteAllArticles();
 
         // then 이런 결과가 나와야함
-        assertThat(memberService.loadAllArticles().size())
+        assertThat(articleService.loadAllArticles().size())
             .isEqualTo(0);
     }
 
@@ -172,15 +172,15 @@ class MemberServiceTest {
         article3.setTitle("spring (3)");
         article3.setContext("board demo (3)");
 
-        Long id1 = memberService.createArticle(article1);
-        memberService.createArticle(article2);
-        memberService.createArticle(article3);
+        Long id1 = articleService.createArticle(article1);
+        articleService.createArticle(article2);
+        articleService.createArticle(article3);
 
         // when 이걸 실행했을때
-        memberService.deleteOneArticle(id1);
+        articleService.deleteOneArticle(id1);
 
         // then 이런 결과가 나와야함
-        assertThat(memberService.loadAllArticles().size())
+        assertThat(articleService.loadAllArticles().size())
             .isEqualTo(2);
     }
 
@@ -202,13 +202,13 @@ class MemberServiceTest {
         article3.setTitle("spring (3)");
         article3.setContext("board demo (3)");
 
-        Long id1 = memberService.createArticle(article1);
-        memberService.createArticle(article2);
-        memberService.createArticle(article3);
+        Long id1 = articleService.createArticle(article1);
+        articleService.createArticle(article2);
+        articleService.createArticle(article3);
 
         // when
-        memberService.deleteOneArticle(id1);
-        Optional<Article> optional = memberService.loadOneArticle(id1);
+        articleService.deleteOneArticle(id1);
+        Optional<Article> optional = articleService.loadOneArticle(id1);
 
         // then
         assertThat(optional).isEqualTo(Optional.empty());

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>🏠 메인 페이지</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <h1>🏠 메인 페이지</h1>
+    <h3>현재 시간: <span th:text="${date}">yyyy.MM.dd HH:mm</span></h3>
+
+    <a href="create"><button>글 추가</button></a>
+    <h2>글 목록</h2>
+
+    <table class="tb_col">
+        <tr>
+            <th>title</th>
+            <th>name</th>
+            <th>context</th>
+        </tr>
+        <tr th:each="article : ${articleList}">
+            <td th:text="${article.title}"></td>
+            <td th:text="${article.name}"></td>
+            <td th:text="${article.context}"></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

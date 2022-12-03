@@ -1,11 +1,13 @@
 package com.snaag.board_3.repository;
 
 import com.snaag.board_3.domain.Article;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class MemoryArticleRepository implements ArticleRepository {
     private static Map<Long, Article> store = new HashMap<>();
     private static Long sequence = 0L;
