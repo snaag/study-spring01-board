@@ -2,7 +2,7 @@ package com.snaag.board_3.repository;
 
 import com.snaag.board_3.domain.Article;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 public interface ArticleRepository {
@@ -10,7 +10,7 @@ public interface ArticleRepository {
     Long create(Article article);
 
     // R _ all
-    Map<Long, Article> loadAll();
+    List<Article> loadAll();
 
     // R _ one
     Optional<Article> loadOne(Long id);

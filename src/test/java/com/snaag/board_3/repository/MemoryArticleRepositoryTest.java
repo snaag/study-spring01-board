@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -59,7 +61,7 @@ class MemoryArticleRepositoryTest {
         memoryArticleRepository.create(articleCreate2);
 
         // when 이걸 실행했을때
-        Map<Long, Article> loadStore = memoryArticleRepository.loadAll();
+        List<Article> loadStore = memoryArticleRepository.loadAll();
         Integer size = loadStore.size();
 
         // then 이런 결과가 나와야함
@@ -137,7 +139,7 @@ class MemoryArticleRepositoryTest {
         memoryArticleRepository.deleteAll();
 
         // then 이런 결과가 나와야함
-        Map<Long, Article> store = memoryArticleRepository.loadAll();
+        List<Article> store = memoryArticleRepository.loadAll();
         assertThat(store.size()).isEqualTo(0);
     }
 

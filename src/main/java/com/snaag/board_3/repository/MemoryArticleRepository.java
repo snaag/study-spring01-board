@@ -3,9 +3,7 @@ package com.snaag.board_3.repository;
 import com.snaag.board_3.domain.Article;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class MemoryArticleRepository implements ArticleRepository {
@@ -15,6 +13,7 @@ public class MemoryArticleRepository implements ArticleRepository {
     @Override
     public Long create(Article article) {
         updateSequence();
+        article.setId(sequence);
         store.put(sequence, article);
         return sequence;
     }
@@ -24,9 +23,10 @@ public class MemoryArticleRepository implements ArticleRepository {
     }
 
     @Override
-    public Map<Long, Article> loadAll() {
-        return store;
+    public List<Article> loadAll() {
+        return new ArrayList<>(store.values());
     }
+
 
     @Override
     public Optional<Article> loadOne(Long id) {

@@ -5,7 +5,7 @@ import com.snaag.board_3.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,7 +24,7 @@ public class ArticleService {
     }
 
     // 글 모두 불러오기
-    public Map<Long, Article> loadAllArticles() {
+    public List<Article> loadAllArticles() {
         return articleRepository.loadAll();
     }
 
