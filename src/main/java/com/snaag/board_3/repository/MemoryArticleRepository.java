@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+// SpringConfig 에서 Spring bean 에 등록을 해줬기 때문에 삭제함
+//@Repository
 public class MemoryArticleRepository implements ArticleRepository {
     private static Map<Long, Article> store = new HashMap<>();
     private static Long sequence = 0L;

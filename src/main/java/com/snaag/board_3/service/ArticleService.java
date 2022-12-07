@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+// SpringConfig 에서 Spring bean 에 등록을 해줬기 때문에 삭제함
+//@Service
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    @Autowired
     public ArticleService(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }

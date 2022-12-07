@@ -19,7 +19,7 @@ public class HomeController {
     public HomeController(ArticleService articleService) {
         this.articleService = articleService;
 
-        addSampleArticles();
+//        addSampleArticles();
     }
 
     private void addSampleArticles() {
