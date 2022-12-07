@@ -1,9 +1,11 @@
 package com.snaag.board_3.service;
 
 import com.snaag.board_3.domain.Article;
+import com.snaag.board_3.repository.ArticleRepository;
 import com.snaag.board_3.repository.MemoryArticleRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,13 +14,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Transactional
 class MemberServiceIntegrationTest {
-    public MemoryArticleRepository memoryArticleRepository = new MemoryArticleRepository();
-    public ArticleService articleService = new ArticleService(memoryArticleRepository);
+    @Autowired
+    ArticleService articleService;
+    @Autowired
+    ArticleRepository articleRepository;
 
-    @AfterEach
-    public void afterEach() {
-        articleService.deleteAllArticles();
-    }
 
     @Test
     public void 글쓰기() {

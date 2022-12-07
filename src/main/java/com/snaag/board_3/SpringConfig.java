@@ -2,6 +2,7 @@ package com.snaag.board_3;
 
 import com.snaag.board_3.repository.ArticleRepository;
 import com.snaag.board_3.repository.JdbcArticleRepository;
+import com.snaag.board_3.repository.JdbcTemplateArticleRepository;
 import com.snaag.board_3.repository.MemoryArticleRepository;
 import com.snaag.board_3.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class SpringConfig {
     @Bean
     public ArticleRepository articleRepository() {
 //        return new MemoryArticleRepository();
-        return new JdbcArticleRepository(dataSource);
+//        return new JdbcArticleRepository(dataSource);
+        return new JdbcTemplateArticleRepository(dataSource);
     }
 
 }
